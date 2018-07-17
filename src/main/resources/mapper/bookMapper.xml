@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.snnu.dao.BookDao">
+    <select id="getAll" resultType="com.example.snnu.entity.Book">
+        SELECT *
+        FROM book
+    </select>
+    <select id="queryByPage" resultType="com.example.snnu.entity.Book">
+        SELECT *
+        FROM book
+        WHERE 1=1 AND book_publication = #{bookPublication}
+        LIMIT #{pageSize} OFFSET #{pageNum}
+    </select>
+
+    <insert id="insertBook" parameterType="com.example.snnu.entity.Book">
+        INSERT
+        INTO book(book_id, book_name, book_author, page_size, book_publication, book_pub_data, book_image)
+        VALUES (#{book.bookId},#{book.bookName},#{book.bookAuthor},#{book.pageSize},#{book.bookPublication},#{book.bookPubData},#{book.bookImage})
+    </insert>
+</mapper>

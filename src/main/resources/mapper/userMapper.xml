@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.snnu.dao.UserDao">
+
+    <!--第8题-->
+
+    <sql id="tb_user">
+        id,age,pass_word,reg_time,user_name,sex,birthday,phone_id,computer_id,user_image
+    </sql>
+
+    <select id="getAll" resultType="com.example.snnu.entity.User">
+        select <include refid="tb_user"/>
+        from user
+    </select>
+    <select id="queryById" resultType="com.example.snnu.entity.User">
+        select <include refid="tb_user"/>
+        from user
+        where user_name = #{userName}
+    </select>
+    <insert id="insert" parameterType="com.example.snnu.entity.User">
+        insert
+        into user(<include refid="tb_user"/> )
+        values (#{user.id},#{user.age},#{user.passWord},#{user.regTime},#{user.userName},#{user.sex},#{user.birthday},#{user.phoneId},#{user.computerId},#{user.userImage})
+    </insert>
+
+</mapper>
