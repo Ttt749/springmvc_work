@@ -15,5 +15,9 @@ public class IpConfig {
      * 本机服务
      */
     public static int B_PORT = 8868;
+    /**
+     * 是否需要查找设备
+     */
+    public static boolean flag = true;
 
 }

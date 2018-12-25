@@ -17,14 +17,15 @@ public class SpringmvcWorkApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringmvcWorkApplication.class, args);
+		new NettyServer(IpConfig.B_PORT).start();
+//		new SendUdp().start();
+//		new GetUdp().start();
 	}
 	@Bean
 	public MultipartConfigElement multipartConfigElement(){
 		MultipartConfigFactory factory = new MultipartConfigFactory();
 		factory.setMaxFileSize("100MB");
 		factory.setMaxRequestSize("100MB");
-		new NettyServer(IpConfig.B_PORT).start();
-		new LockServer(IpConfig.L_IP,IpConfig.L_PORT).start();
 		return factory.createMultipartConfig();
 	}
 }
